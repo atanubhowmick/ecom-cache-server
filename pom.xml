@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<spring-cloud.version>Hoxton.SR1</spring-cloud.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <resource.directory>src/main/resources</resource.directory>
 	</properties>
@@ -24,6 +25,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		
+		<!-- Eureka client -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		
 		<!-- Enable Cache -->
@@ -50,6 +57,18 @@
 		</dependency>
 	</dependencies>
 	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 	<!-- Profiles -->
 	<profiles>
 		<profile>
@@ -60,13 +79,17 @@
 			<properties>
 				<server.port>0</server.port>
 				<active.profile>dev</active.profile>
+				<eureka.defaultzone>http://127.0.0.1:8085/eureka/</eureka.defaultzone>
+				<instance.ip>127.0.0.1</instance.ip>
 			</properties>
 		</profile>
 		<profile>
 			<id>docker</id>
 			<properties>
-				<server.port>8087</server.port>
+				<server.port>8088</server.port>
 				<active.profile>docker</active.profile>
+				<eureka.defaultzone>http://172.17.0.1:8085/eureka/</eureka.defaultzone>
+				<instance.ip>172.17.0.1</instance.ip>
 			</properties>
 		</profile>
 	</profiles>
