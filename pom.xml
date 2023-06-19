@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>dev.atanu.ecom</groupId>
 	<artifactId>ecom-cache-server</artifactId>
-	<version>1.0.0.RELEASE</version>
+	<version>1.0.0</version>
 	<name>ecom-cache-server</name>
 	<description>Cache Rerver</description>
 
