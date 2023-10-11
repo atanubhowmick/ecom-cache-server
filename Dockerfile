@@ -7,8 +7,8 @@ ARG JAR_FILE=target/ecom-cache-server-1.0.0.jar
 # cd /opt/app
 WORKDIR /opt/app
 
-# cp target/ecom-cache-server-1.0.0.jar /opt/app/ecom-cache-server.jar
-COPY ${JAR_FILE} ecom-cache-server-1.0.0.jar
+# cp JAR_FILE /opt/app/ecom-cache-server.jar
+COPY ${JAR_FILE} ecom-cache-server.jar
 
 # java -jar /opt/app/gateway-server.jar
-ENTRYPOINT ["java","-jar","ecom-cache-server-1.0.0.jar"]
+ENTRYPOINT ["java","-jar","ecom-cache-server.jar"]
